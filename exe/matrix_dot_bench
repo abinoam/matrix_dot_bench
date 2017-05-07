@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+
+require 'benchmark/ips'
+
+Benchmark.ips do |x|
+
+  first_rows  = 10
+  first_cols  = 20
+  second_rows = 20
+  second_cols = 40
+
+  first_array  = Array.new(first_rows) { Array.new(first_cols) { rand } }
+  second_array = Array.new(second_rows) { Array.new(second_cols) { rand } }
+  result_array = Array.new(first_rows) { Array.new(second_cols) }
+
+  x.report "Array iterative" do
+    0.upto(first_rows-1) do |row_number|
+      0.upto(second_cols-1) do |col_number|
+        product = 0.0
+        0.upto(first_cols-1) do |ix|
+          product += (first_array[row_number][ix]*second_array[ix][col_number])
+        end
+        result_array[row_number][col_number] = product
+      end
+    end
+    result_array
+  end
+
+  x.compare!
+end
