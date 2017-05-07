@@ -2,9 +2,9 @@
 
 require 'benchmark/ips'
 require 'matrix'
+require 'nmatrix'
 
 Benchmark.ips do |x|
-
   first_rows  = 10
   first_cols  = 20
   second_rows = 20
@@ -34,5 +34,18 @@ Benchmark.ips do |x|
     first_matrix * second_matrix
   end
 
+  first_nmatrix  = NMatrix[*first_array, dtype: :float64]
+  second_nmatrix = NMatrix[*second_array, dtype: :float64]
+
+  x.report "NMatrix#dot(float64)" do
+    first_nmatrix.dot(second_nmatrix)
+  end
+
+  first_nmatrix_object  = NMatrix[*first_array, dtype: :object]
+  second_nmatrix_object = NMatrix[*second_array, dtype: :object]
+
+  x.report "NMatrix#dot(object)" do
+    first_nmatrix_object.dot(second_nmatrix_object)
+  end
   x.compare!
 end
