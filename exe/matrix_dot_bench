@@ -15,10 +15,17 @@ Benchmark.ips do |x|
   result_array = Array.new(first_rows) { Array.new(second_cols) }
 
   x.report "Array iterative" do
-    0.upto(first_rows-1) do |row_number|
-      0.upto(second_cols-1) do |col_number|
+    # We already have these values with first_rows, etc.
+    # But we need to put them here so Array strategy doesn't
+    # have an unfair advantage over the others.
+    result_rows = first_array.size
+    result_cols = second_array[0].size
+    max_ix      = first_array[0].size - 1
+
+    0.upto(result_rows-1) do |row_number|
+      0.upto(result_cols-1) do |col_number|
         product = 0.0
-        0.upto(first_cols-1) do |ix|
+        0.upto(max_ix) do |ix|
           product += (first_array[row_number][ix]*second_array[ix][col_number])
         end
         result_array[row_number][col_number] = product
