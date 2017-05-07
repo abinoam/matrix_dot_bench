@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'benchmark/ips'
+require 'matrix'
 
 Benchmark.ips do |x|
 
@@ -24,6 +25,13 @@ Benchmark.ips do |x|
       end
     end
     result_array
+  end
+
+  first_matrix  = Matrix[*first_array]
+  second_matrix = Matrix[*second_array]
+
+  x.report "MRI Matrix#*" do
+    first_matrix * second_matrix
   end
 
   x.compare!
