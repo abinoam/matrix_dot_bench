@@ -1,28 +1,16 @@
 # MatrixDotBench
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/matrix_dot_bench`. To experiment with that code, run `bin/console` for an interactive prompt.
+A simple benchmark of some strategies to do Matrix multiplication (dot product) in Ruby.
 
-TODO: Delete this and the text above, and describe your gem
+Basically it shows that using `NMatrix#dot` with an NMatrix object with `dtype: :float64` is more than 400x faster than using `Matrix#*`.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'matrix_dot_bench'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install matrix_dot_bench
+    $ git clone git@github.com:abinoam/matrix_dot_bench.git
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ exe/matrix_dot_bench
 
 ## Development
 
@@ -32,7 +20,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/matrix_dot_bench.
+Bug reports and pull requests are welcome on GitHub at https://github.com/abinoam/matrix_dot_bench.
 
 
 ## License
