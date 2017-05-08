@@ -2,6 +2,8 @@
 
 A simple benchmark of some strategies to do Matrix multiplication (dot product) in Ruby.
 
+See post at: http://abinoam.tl1n.com/400x-faster-matrix-multiplication-for-ruby/
+
 Basically it shows that using `NMatrix#dot` with an NMatrix object with `dtype: :float64` is more than 400x faster than using `Matrix#*`.
 
 ## Installation
