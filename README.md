@@ -7,6 +7,8 @@ Basically it shows that using `NMatrix#dot` with an NMatrix object with `dtype: 
 ## Installation
 
     $ git clone git@github.com:abinoam/matrix_dot_bench.git
+    $ cd matrix_dot_bench
+    $ bundle install
 
 ## Usage
 
